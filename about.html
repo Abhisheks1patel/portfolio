@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 72px;
+            background: -webkit-linear-gradient(rgb(255, 252, 252), rgb(209, 182, 182));
+            -webkit-background-clip : text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-top: 160px;
+        }
+
+        .btn {
+            position: relative;
+            left: 300px;
+            background-color: blue;
+            border-radius: 15px;
+            height: 40px;
+            width: 120px;
+            top: 300px;
+        }
+
+        button {
+            margin-left: 5px;
+            margin-top: 10px;
+            background-color: blue;
+            color: aliceblue;
+        }
+
+        .left,
+        .right {
+            height: 90%;
+            width: 70%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .left {
+            left: 0;
+            width: 20%;
+            background-color: rgb(16, 16, 16);
+        }
+
+        .right {
+            right: 0px;
+            width: 80%;
+            background-color: rgb(56, 1, 44);
+        }
+
+        /*css for socil media */
+
+
+
+        .d-github:before {
+            content: "\f09b"
+        }
+
+        .down:before {
+            content: "\f019"
+        }
+
+        .back:before {
+            content: "\f112"
+        }
+
+        .credit {
+            background: #fff;
+            padding: 12px;
+            font-size: 9pt;
+            text-align: center;
+            color: #333;
+            margin-top: 40px;
+
+        }
+
+        .credit span:before {
+            font-family: FontAwesome;
+            color: #e41b17;
+            content: "\f004";
+
+
+        }
+
+        .credit a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .credit a:hover {
+            color: #1DBF73;
+        }
+
+        .credit a:hover:after {
+            font-family: FontAwesome;
+            content: "\f08e";
+            font-size: 9pt;
+            position: absolute;
+            margin: 3px;
+        }
+
+        main {
+            background: #fff;
+            padding:  20px;
+        }
+
+        article li {
+            color: #444;
+            font-size: 15px;
+            margin-left: 33px;
+            line-height: 1.5;
+            padding: 5px;
+        }
+
+        article h1,
+        article h2,
+        article h3,
+        article h4,
+        article p {
+            padding: 14px;
+            color: #333;
+        }
+
+        article p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        @media only screen and (min-width: 720px) {
+            main {
+                max-width: 720px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 24px;
+            }
+
+
+        }
+
+        .set-overlayer,
+        .set-glass,
+        .set-sticky {
+            cursor: pointer;
+            height: 45px;
+            line-height: 45px;
+            padding: 0 15px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .set-overlayer:after,
+        .set-glass:after,
+        .to-active:after,
+        .set-sticky:after {
+            font-family: FontAwesome;
+            font-size: 18pt;
+            position: relative;
+            float: right;
+        }
+
+        .set-overlayer:after,
+        .set-glass:after,
+        .set-sticky:after {
+            content: "\f204";
+            transition: .6s;
+        }
+
+        .to-active:after {
+            content: "\f205";
+            color: #008080;
+            transition: .6s;
+        }
+
+        .set-overlayer,
+        .set-glass,
+        .set-sticky,
+        .source,
+        .theme-tray {
+            margin: 10px;
+            background: #f2f2f2;
+            border-radius: 5px;
+            border: 2px solid #f1f1f1;
+            box-sizing: border-box;
+        }
+
+        /* Syntax Highlighter*/
+
+        pre.prettyprint {
+            padding: 15px !important;
+            margin: 10px;
+            border: 0 !important;
+            background: #f2f2f2;
+            overflow: auto;
+        }
+
+        .source {
+            white-space: pre;
+            overflow: auto;
+            max-height: 400px;
+        }
+
+        code {
+            border: 1px solid #ddd;
+            padding: 2px;
+            border-radius: 2px;
+        }
+
+        *:focus,
+        *:active {
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .wrapper {
+            background: #897903;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+    top: 400px;
+        }
+
+        .wrapper .icon {
+            position: relative;
+            background-color: #0c0c0c;
+            border-radius: 50%;
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 22px;
+            display: inline-block;
+            align-items: center;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            color: #333;
+            text-decoration: none;
+        }
+
+        .wrapper .tooltip {
+            position: absolute;
+            top: 0;
+            line-height: 1.5;
+            font-size: 14px;
+            background-color: #ffffff;
+            color: #ffffff;
+            padding: 5px 8px;
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .wrapper .tooltip::before {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            background-color: #ffffff;
+            bottom: -3px;
+            left: 50%;
+            transform: translate(-50%) rotate(45deg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .wrapper .icon:hover .tooltip {
+            top: -45px;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .wrapper .icon:hover span,
+        .wrapper .icon:hover .tooltip {
+            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapper .facebook:hover,
+        .wrapper .facebook:hover .tooltip,
+        .wrapper .facebook:hover .tooltip::before {
+            background-color: #3b5999;
+            color: #ffffff;
+        }
+
+        .wrapper .instagram:hover,
+        .wrapper .instagram:hover .tooltip,
+        .wrapper .instagram:hover .tooltip::before {
+            background-color: #e1306c;
+            color: #ffffff;
+        }
+
+        .wrapper .github:hover,
+        .wrapper .github:hover .tooltip,
+        .wrapper .github:hover .tooltip::before {
+            background-color: #eadcdc;
+            color: #181717;
+        }
+
+        .wrapper .linkedin:hover,
+        .wrapper .linkedin:hover .tooltip,
+        .wrapper .linkedin:hover .tooltip::before {
+            background-color: #de463b;
+            color: #ffffff;
+        }
+        .forme{
+            position: relative;
+            top: 120px;
+            text-align: center;
+            font-size: 30px;
+          
+        }
+        .forme b{
+            color: white;
+          position: absolute;
+          left: 70px;
+        }
+        .forme p{
+            color: rgb(236, 240, 7);
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <h1>
+            About Me
+        </h1>
+    </div>
+    <div class="right">
+       <section class="forme">
+        <p><b>Name :</b>Abhishek Kumar Patel</p>
+        <p><b>Age : </b>20</p>
+        <p><b>Pursuing edu.:</b>B.Tech</p>
+        <p><b>language :</b>English,Hindi</p>
+       </section>
+        <div class="wrapper">
+            <h3>Social links :-</h3>
+            <a href="https://www.facebook.com/sabhishek221201" class="icon facebook">
+                <div class="tooltip">Facebook</div>
+                <span><i class="fab fa-facebook-f"></i><img
+                        src="https://www.mhpcolorado.org/wp-content/uploads/2021/02/TS-FB-Icon.png" alt="blank"
+                        width="50px" height="49px" border-radius="5px"></span>
+            </a>
+            <a href="https://www.instagram.com/patel.s_abhi" class="icon instagram">
+                <div class="tooltip">Instagram</div>
+                <span><i class="fab fa-instagram"></i> <img
+                        src="https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/instagram-512.png"
+                        alt="blank" width="48px" height="49px" border-radius="7px"></span>
+            </a>
+            <a href="https://github.com/Abhisheks1patel" class="icon github">
+                <div class="tooltip">Github</div>
+                <span><i class="fab fa-github"></i> <img
+                        src="https://cdn-icons-png.flaticon.com/512/3291/3291695.png" alt="blank"
+                        width="50px" height="50px" border-radius="5px"></span>
+            </a>
+            <a href="https://www.linkedin.com/in/abhishek-kumar-patel-966955203/" class="icon linkedin">
+                <div class="tooltip">linkedin</div>
+                <span><i class="fab fa-linkedin"></i> <img
+                        src="https://cdn.iconscout.com/icon/free/png-256/linkedin-42-151143.png?f=webp&w=128"
+                        alt="blank" width="50px" height="50px" border-radius="15px"></span>
+            </a>
+        </div>
+        <div class="btn">
+            <form action="my resume.pdf" method="get" target="_blank">
+                <button type="submit">Download resume</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

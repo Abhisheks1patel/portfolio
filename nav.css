@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Prosto+One&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  } 
+  .navbar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background:linear-gradient(to right, #decba4,#3e5151);
+    color: rgb(253, 253, 253);
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 80px;
+  }
+  
+  .navbar li {
+    display: inline-block;
+    padding: 25px;
+  }
+  
+  .navbar li a {
+    color: rgb(7, 7, 7);
+    text-decoration: none;
+  }
+  
+  .navbar li a.active {
+    color: tomato;
+  }
+  .navbar img{
+    height: 50px;
+    width: 50px;
+  position: relative;
+ right: 200px;
+ border-radius: 25px;
+ top: 15px;
+}
+footer{
+  color: bisque;
+  background-color: black;
+}
+.container{
+  background-color: #3e5151;
+}

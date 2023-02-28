@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skills</title>
+    <style>
+        .background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 350px;
+            height: 500px;
+            margin: auto;
+        }
+
+        .left,
+        .right {
+            height: 90%;
+            width: 70%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .left {
+            left: 0;
+            width: 20%;
+            background-color: rgb(16, 16, 16);
+        }
+
+        .right {
+            right: 0px;
+            width: 80%;
+            background-color: rgb(56, 1, 44);
+        }
+
+        .left h1 {
+            background: -webkit-linear-gradient(rgb(238, 238, 238), rgb(236, 40, 40));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 80px;
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        /* skillsbar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #778ca3;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        }
+
+        .main {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .progress {
+            margin: 25px 0;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 13px;
+        }
+
+        .title h3 {
+            font-size: 25px;
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+
+        .barline {
+            height: 12px;
+            background: #c8d6e5;
+            border-radius: 20px;
+        }
+
+        .countbar {
+            height: 12px;
+            background: #5f27cd;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            position: relative;
+        }
+
+        .countbar h3 {
+            position: absolute;
+            right: -19px;
+            top: -35px;
+            background: #34495e;
+            padding: 4px 6px;
+            font-size: 16px;
+            font-weight: 400;
+            border-radius: 5px;
+        }
+
+        .countbar h3::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 11px;
+            height: 11px;
+            background: #34495e;
+            transform: rotate(45deg) translateX(-60%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <h1>
+            Skills
+        </h1>
+    </div>
+    <div class="right">
+        <div class="main">
+            <div class="progress">
+                <div class="title">
+                    <h3>C,C++</h3>
+                </div>
+                <div class="barline">
+                    <div class="countbar" data-percentNumber="40"></div>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="title">
+                    <h3>Python</h3>
+                </div>
+                <div class="barline">
+                    <div class="countbar" data-percentNumber="30"></div>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="title">
+                    <h3>web developer</h3>
+                </div>
+                <div class="barline">
+                    <div class="countbar" data-percentNumber="68"></div>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="title">
+                    <h3>graphic design</h3>
+                </div>
+                <div class="barline">
+                    <div class="countbar" data-percentNumber="90"></div>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="title">
+                    <h3>Teamwork</h3>
+                </div>
+                <div class="barline">
+                    <div class="countbar" data-percentNumber="80"></div>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="title">
+                    <h3>javascript</h3>
+                </div>
+                <div class="barline">
+                    <div class="countbar" data-percentNumber="20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let  numberPercent = document.querySelectorAll('.countbar')
+let getPercent = Array.from(numberPercent)
+
+getPercent.map((items) => {
+    let startCount = 0
+    let progressBar = () => {
+        startCount ++
+        items.innerHTML = `<h3>${startCount}%</h3>`
+        items.style.width = `${startCount}%`
+        if(startCount == items.dataset.percentnumber) {
+            clearInterval(stop)
+        }
+    }
+    let stop = setInterval(() => {
+        progressBar()
+    },25)
+})
+    </script>
+</body>
+
+</html>

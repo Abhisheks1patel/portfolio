@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 350px;
+            height: 500px;
+            margin: auto;
+        }
+
+        .change-text {
+            color: rgb(216, 203, 203);
+            line-height: 660px;
+            text-align: center;
+            font-size: 30px;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        h1 {
+            font-size: 72px;
+            background: -webkit-linear-gradient(rgb(238, 238, 238), rgb(236, 40, 40));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            top: 200px;
+            position: relative;
+        }
+
+        
+
+        pre {
+            text-align: center;
+            color: snow;
+            font-size: 30px;
+            position: relative;
+            top: 0px;
+            right: 50px;
+        }
+        pre p{
+            position: relative;
+            bottom: 5px;
+            font-size: 20px;
+        }
+        @keyframes blinking {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            51% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .change-text:after {
+            content: '_';
+            animation: blinking 1.2s infinite;
+
+        }
+
+      img {
+            height: 264px;
+            width: 264px;
+            position: relative;
+            left: 40px;
+            bottom: 180px;
+            border-radius: 140px;
+        } 
+        .left,
+        .right {
+            height: 90%;
+            width: 70%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .left {
+            left: 0;
+            width: 20%;
+            background-color: rgb(16, 16, 16);
+        }
+
+        .right {
+            right: 0px;
+            width: 80%;
+            background-color: rgb(56, 1, 44);
+        }
+       
+
+        @keyframes float {
+            0% {
+                box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+                transform: translatey(0px);
+            }
+            50% {
+                box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+                transform: translatey(-20px);
+            }
+            100% {
+                box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+                transform: translatey(0px);
+            }
+        }
+        .avatar {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            box-shadow: 0 10px 15px 0px rgba(0,0,0,0.8);
+            transform: translatey(0px);
+            animation: float 5s ease-in-out infinite;
+               }
+               h2{
+                text-align: center;
+                background: -webkit-linear-gradient(rgb(238, 238, 238), rgb(236, 40, 40));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 50px;
+               }
+        
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <h1>
+            Home
+        </h1>
+    </div>
+    <div class="right">
+    <h2> <u> Welcome! to my profile </u> </h2>
+    <div class="box">
+     
+        <pre>
+            <p> My name is Abhishek kumar patel</p>
+       <u>I</u> <u>am</u>   
+    </pre>
+            <div class="avatar">
+                <img src="img.jpeg" alt="blank">
+            </div>
+        <div class="background">
+            <div class="change-text"> An engineering student</div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var words = ['An engineering student', 'web devloper', 'C & Python learner'],
+            currentStep = 0,
+            textEl = document.querySelector('.change-text'),
+            oldWord = '';
+        setTimeout(changeWord, 1000);
+
+        function changeWord() {
+            oldWord = textEl.innerHTML;
+
+            // check if there is a word atm or not
+            if (oldWord.length < 1) {
+
+                if (currentStep !== words.length - 1) {
+                    currentStep++;
+                } else {
+                    currentStep = 0;
+                }
+                addNextWord();
+            } else {
+                setTimeout(deleteWord, 800);
+            }
+
+        };
+
+        function deleteWord() {
+            var WordLength = oldWord.length,
+                currentWord = textEl.innerHTML,
+                currentLength = currentWord.length;
+
+
+            // The word is deleted so, start adding in the new one
+            if (currentLength < 1) {
+                changeWord();
+                return;
+            }
+
+            // Remove a charachter
+            textEl.innerHTML = currentWord.substring(0, currentLength - 1);
+
+            setTimeout(deleteWord, 100);
+        }
+        function addNextWord() {
+            var currentWord = textEl.innerHTML,
+                currentLength = currentWord.length,
+                nextWord = words[currentStep],
+                nextWordLength = nextWord.length;
+
+
+            if (currentLength === nextWordLength) {
+                changeWord();
+                return;
+            }
+            textEl.innerHTML = nextWord.substring(0, currentLength + 1);
+            setTimeout(addNextWord, 100);
+        }
+    </script>
+</body>
+
+</html>
